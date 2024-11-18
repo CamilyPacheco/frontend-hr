@@ -1,0 +1,36 @@
+<div class="container mt-5">
+    <h3 class="text-center">Lista de Empleados</h3>
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+      {{ errorMessage }}
+    </div>
+    
+    <table *ngIf="empleados.length > 0" class="table table-bordered mt-4">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Teléfono</th>
+          <th>Fecha de Contratación</th>
+          <th>Salario</th>
+          <th>Departamento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let empleado of empleados">
+          <td>{{ empleado.employee_id }}</td>
+          <td>{{ empleado.first_name }} {{ empleado.last_name }}</td>
+          <td>{{ empleado.email }}</td>
+          <td>{{ empleado.phone_number }}</td>
+          <td>{{ empleado.hire_date | date:'dd/MM/yyyy' }}</td>
+          <td>{{ empleado.salary | currency:'USD' }}</td>
+          <td>{{ empleado.department_id }}</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div *ngIf="empleados.length === 0" class="alert alert-info mt-3">
+      No hay empleados para mostrar.
+    </div>
+  </div>
+  
